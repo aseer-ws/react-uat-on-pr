@@ -7,8 +7,8 @@
  *
  */
 
-import React from 'react';
-import { Switch, Route , useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import map from 'lodash/map';
@@ -21,13 +21,18 @@ import { colors } from '@themes';
 import Header from '@components/Header';
 import For from '@components/For';
 
-
 const theme = {
   fg: colors.primary,
   bg: colors.secondary
 };
 
 export function App({ history, location }) {
+  useEffect(() => {
+    if (location.search.includes('?redirect_uri=')) {
+      const routeToReplace = new URLSearchParams(location.search).get('redirect_uri');
+      history.replace(routeToReplace);
+    }
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <Header />
@@ -67,6 +72,7 @@ export function App({ history, location }) {
   );
 }
 App.propTypes = {
-  location: PropTypes.object
+  location: PropTypes.object,
+  history: PropTypes.object
 };
 export default compose(withRouter)(App);
