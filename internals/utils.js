@@ -3,7 +3,7 @@ function isUAT() {
 }
 
 function getBasePublicPath() {
-  return isUAT() ? process.env.BRANCH_NAME || './' : '/';
+  return isUAT() ? `/${process.env.BRANCH_NAME}/` || './' : '/';
 }
 
 module.exports = { getBasePublicPath, isUAT };
