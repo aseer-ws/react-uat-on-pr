@@ -7,17 +7,15 @@ let baseUrl = '';
 if (isUAT()) {
   routes.forEach(routeKey => {
     const route = routeConstants[routeKey].route;
-    if (pathname.includes(route)) {
-      if (pathname.substring(pathname.length - route.length, pathname.length) === route) {
-        baseUrl = pathname.substring(0, pathname.length - route.length);
-      } else if (pathname.substring(pathname.length - route.length, pathname.length - 1) === `${route}/`) {
-        baseUrl = pathname.substring(0, pathname.length - route.length - 1);
-      }
+    if (pathname.endsWith(route)) {
+      baseUrl = pathname.substring(0, pathname.length - route.length);
+    } else if (pathname.endsWith(`${route}/`)) {
+      baseUrl = pathname.substring(0, pathname.length - route.length - 1);
     }
   });
 }
 
-console.log({ baseUrl });
+console.log({ baseUrl, isUAT: isUAT() });
 
 const history = createBrowserHistory({ basename: baseUrl });
 export default history;
