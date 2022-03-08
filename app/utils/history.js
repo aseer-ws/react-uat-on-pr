@@ -15,7 +15,7 @@ if (isUAT()) {
   });
 }
 
-console.log({ baseUrl, isUAT: isUAT() });
+console.log({ baseUrl, isUAT: isUAT(), pathname });
 
 const history = createBrowserHistory({ basename: baseUrl });
 export default history;
