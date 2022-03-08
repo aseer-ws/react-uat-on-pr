@@ -2,7 +2,7 @@ import { createBrowserHistory } from 'history';
 import routeConstants from '@utils/routeConstants';
 import { isUAT } from './index';
 const routes = Object.keys(routeConstants);
-const pathname = window.location.pathname;
+let pathname = window.location.pathname.replace('/index.html', '');
 let baseUrl = '';
 if (isUAT()) {
   routes.forEach(routeKey => {
