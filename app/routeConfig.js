@@ -9,7 +9,7 @@ export const routeConfig = {
     ...routeConstants.repos
   },
   newHomePath: {
-    component: () => <h1>New Home path</h1>,
+    component: () => <h1 style={{ textAlign: 'center' }}>New Home path</h1>,
     ...routeConstants.newHomePath
   },
   notFoundPage: {
