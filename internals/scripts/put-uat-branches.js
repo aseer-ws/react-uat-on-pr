@@ -23,20 +23,20 @@ async function getBranchNames() {
 async function updateFallbackPage({ deleteOnly } = {}) {
   let $ = cheerio.load(fs.readFileSync('uat/index.html'));
   $('ul').html('');
-
-  // eslint-disable-next-line no-console
-  console.log('Braches deleted');
+  let logMessage = 'Branches deleted';
 
   if (!deleteOnly) {
     const branches = await getBranchNames();
-    let branchLi = '<li class="branch"><a href="/">Home Page</a></li>';
+    let branchLi = '';
     branches.forEach(branch => (branchLi += `<li class="branch"><a href="${branch}">${branch}</a></li>\n\t`));
     $(branchLi).appendTo('ul');
-    const htmlData = $.html().toString();
-    fs.writeFileSync('uat/index.html', htmlData);
-    // eslint-disable-next-line no-console
-    console.log('Braches added');
-  }
+    logMessage = 'Branches added';
+  } 
+  const htmlData = $.html().toString();
+  fs.writeFileSync('uat/index.html', htmlData);
+  // eslint-disable-next-line no-console
+  console.log(logMessage);
+
 }
 
 updateFallbackPage({ deleteOnly: process.argv.includes('--delete-only') });
