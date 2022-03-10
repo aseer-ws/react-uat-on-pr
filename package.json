@@ -14,6 +14,8 @@
   "homepage": "http://wednesday-solutions.github.io/react-template",
   "license": "MIT",
   "scripts": {
+    "put-uat-branches": "node internals/scripts/put-uat-branches",
+    "put-uat-branches:delete": "node internals/scripts/put-uat-branches --delete-only",
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",
@@ -70,12 +72,14 @@
   },
   "pre-commit": "lint:staged",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.53.1",
     "@formatjs/intl-relativetimeformat": "^9.1.6",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "12.0.0",
     "antd": "^4.9.3",
     "apisauce": "2.1.1",
     "chalk": "4.1.1",
+    "cheerio": "^1.0.0-rc.10",
     "compression": "1.7.4",
     "connected-react-router": "6.4.0",
     "core-js": "3.6.5",
