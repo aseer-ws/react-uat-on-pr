@@ -28,7 +28,7 @@ async function updateFallbackPage({ deleteOnly } = {}) {
   if (!deleteOnly) {
     const branches = await getBranchNames();
     let branchLi = '';
-    branches.forEach(branch => (branchLi += `<li class="branch"><a href="${branch}">${branch}</a></li>\n\t`));
+    branches.forEach(branch => (branchLi += `<li class="branch"><a href="${branch}" target="_blank" rel="noreferrer">${branch}</a></li>\n\t`));
     $(branchLi).appendTo('ul');
     logMessage = 'Branches added';
   } 
