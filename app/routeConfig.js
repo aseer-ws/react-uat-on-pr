@@ -1,13 +1,15 @@
+import React from 'react';
 import NotFound from '@containers/NotFoundPage/Loadable';
 import HomeContainer from '@containers/HomeContainer/Loadable';
 import routeConstants from '@utils/routeConstants';
+
 export const routeConfig = {
   repos: {
     component: HomeContainer,
     ...routeConstants.repos
   },
   newHomePath: {
-    component: () => <h1>New Home path</h1>,
+    component: () => <h1 style={{ textAlign: 'center' }}>New Home path</h1>,
     ...routeConstants.newHomePath
   },
   notFoundPage: {

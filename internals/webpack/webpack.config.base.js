@@ -8,7 +8,8 @@ const colors = require('../../app/themes/colors');
 const { getBasePublicPath } = require('../utils');
 const publicPath = getBasePublicPath();
 
-const dotEnvFile = process.env.NODE_ENV === 'production' ? `.env` : `.env.${process.env.NODE_ENV}`;
+const dotEnvFile =
+  process.env.NODE_ENV === 'production' ? `.env` : `.env.${process.env.ENVIRONMENT_NAME || 'development'}`;
 const env = dotenv.config({ path: dotEnvFile }).parsed;
 const envKeys = {
   ...Object.keys(process.env).reduce((prev, next) => {

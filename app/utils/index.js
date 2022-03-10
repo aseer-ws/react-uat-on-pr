@@ -34,3 +34,7 @@ export const mapKeysDeep = (obj, fn) =>
         return acc;
       }, {})
     : obj;
+
+export function isUAT() {
+  return process.env.ENVIRONMENT_NAME === 'development' && process.env.NODE_ENV === 'production';
+}
